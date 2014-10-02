@@ -29,7 +29,15 @@
                                 <li><a href="/drugs/search/">Rechercher</a></li>
                             </ul>
                         </li>
+						<li class="dropdown {% if practitionerMenu is defined %}active{% endif %}">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Praticien <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/pratitioners/">Consulter</a></li>
+                                <li><a href="/practitioners/search/">Rechercher</a></li>
+                            </ul>
+                        </li>
                     </ul>
+
                 </div>
             </div><!-- /.container -->
         </nav>
