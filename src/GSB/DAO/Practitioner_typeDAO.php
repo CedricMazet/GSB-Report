@@ -19,9 +19,9 @@ class Practitioner_typeDAO extends DAO
         $families = array();
         foreach ($result as $row) {
             $Practitioner_typeId = $row['Practitioner_type_id'];
-            $families[$Practitioner_typeId] = $this->buildDomainObject($row);
+            $Practitioner_type[$Practitioner_typeId] = $this->buildDomainObject($row);
         }
-        return $families;
+        return $Practitioner_type;
     }
 
     /**

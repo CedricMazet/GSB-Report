@@ -21,7 +21,7 @@ class PractitionerDAO extends DAO
      * @return array The list of all Practitioners.
      */
     public function findAll() {
-        $sql = "select * from Practitioner order by trade_name";
+        $sql = "select * from Practitioner order by name";
         $result = $this->getDb()->fetchAll($sql);
         
         // Converts query result to an array of domain objects
@@ -41,7 +41,7 @@ class PractitionerDAO extends DAO
      * @return array The list of Practitioners.
      */
     public function findAllByPractitioner_type($Practitioner_typeId) {
-        $sql = "select * from Practitioner where Practitioner_type_id=? order by trade_name";
+        $sql = "select * from Practitioner where Practitioner_type_id=? order by name";
         $result = $this->getDb()->fetchAll($sql, array($Practitioner_typeId));
         
         // Convert query result to an array of domain objects
@@ -83,12 +83,12 @@ class PractitionerDAO extends DAO
 
         $Practitioner = new Practitioner();
         $Practitioner->setId($row['Practitioner_id']);
-        $Practitioner->setCopyrighting($row['copyrighting']);
-        $Practitioner->setTradeName($row['trade_name']);
-        $Practitioner->setContent($row['content']);
-        $Practitioner->setEffects($row['effects']);
-        $Practitioner->setContraindication($row['contraindication']);
-        $Practitioner->setSamplePrice($row['sample_price']);
+        $Practitioner->setCopyrighting($row['name']);
+        $Practitioner->setTradeName($row['first_name']);
+        $Practitioner->setContent($row['address']);
+        $Practitioner->setEffects($row['zip_code']);
+        $Practitioner->setContraindication($row['city']);
+        $Practitioner->setSamplePrice($row['notoriety_coefficient']);
         $Practitioner->setPractitioner_type($Practitioner_type);
         return $Practitioner;
     }

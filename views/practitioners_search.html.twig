@@ -8,11 +8,11 @@
 <div class="well">
     <form class="form-horizontal" role="form" action="/drugs/results/" method="post">
         <div class="form-group">
-            <label class="col-sm-2 col-sm-offset-1 control-label">Famille</label>
+            <label class="col-sm-2 col-sm-offset-1 control-label">Type Praticiens</label>
             <div class="col-sm-7">
-                <select class="form-control" name="family">
-                    {% for family in families %}
-                        <option value="{{ family.id }}">{{ family.name }}</option>
+                <select class="form-control" name="practitioner_type">
+                    {% for practitioner_type in practitioner_types %}
+                        <option value="{{ practitioner_type.id }}">{{ practitioner_type.name }}</option>
                     {% endfor %}
                 </select>
             </div>

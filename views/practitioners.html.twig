@@ -19,12 +19,15 @@
             {% for practitioner in practitioner %}
                 <tr>
                     <td><a href="/practitioners/{{ practitioner.id }}">{{ practitioner.name }}</a></td>
-                    <td>{{ drug.family.name }}</td>
+                    <td>{{ practitioner.name }}</td>
+					<td>{{ practitioner.firstname }}</td>
+					<td>{{ practitioner.city }}</td>
+					<td>{{ practitioner.practitioner_type.name }}</td>
                 </tr>
             {% endfor %}
         </table>
     </div>
 {% else %}
-    <div class="alert alert-warning">Aucun médicament trouvé.</div>
+    <div class="alert alert-warning">Aucun praticiens trouvé.</div>
 {% endif %}   
 {% endblock %}
