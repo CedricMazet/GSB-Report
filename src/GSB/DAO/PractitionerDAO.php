@@ -47,7 +47,7 @@ class PractitionerDAO extends DAO
         // Convert query result to an array of domain objects
         $Practitioners = array();
         foreach ($result as $row) {
-            $PractitionerId = $row['Practitioner_id'];
+            $PractitionerId = $row['practitioner_id'];
             $Practitioners[$PractitionerId] = $this->buildDomainObject($row);
         }
         return $Practitioners;
