@@ -7,12 +7,12 @@ use GSB\Domain\Practitioner;
 class PractitionerDAO extends DAO
 {
     /**
-     * @var \GSB\DAO\Practitioner_typeDAO
+     * @var \GSB\DAO\PractitionerTypeDAO
      */
-    private $Practitioner_typeDAO;
+    private $PractitionerTypeDAO;
 
-    public function setPractitioner_typeDAO($Practitioner_typeDAO) {
-        $this->Practitioner_typeDAO = $Practitioner_typeDAO;
+    public function setPractitionerTypeDAO($PractitionerTypeDAO) {
+        $this->PractitionerTypeDAO = $PractitionerTypeDAO;
     }
 
     /**
@@ -21,28 +21,28 @@ class PractitionerDAO extends DAO
      * @return array The list of all Practitioners.
      */
     public function findAll() {
-        $sql = "select * from Practitioner order by name";
+        $sql = "select * from practitioner order by practitioner_name";
         $result = $this->getDb()->fetchAll($sql);
         
         // Converts query result to an array of domain objects
         $Practitioners = array();
         foreach ($result as $row) {
-            $PractitionerId = $row['Practitioner_id'];
+            $PractitionerId = $row['practitioner_id'];
             $Practitioners[$PractitionerId] = $this->buildDomainObject($row);
         }
         return $Practitioners;
     }
 
     /**
-     * Returns the list of all Practitioners for a given Practitioner_type, sorted by trade name.
+     * Returns the list of all Practitioners for a given PractitionerType, sorted by trade name.
      *
-     * @param integer $Practitioner_typeDd The Practitioner_type id.
+     * @param integer $PractitionerTypeDd The PractitionerType id.
      *
      * @return array The list of Practitioners.
      */
-    public function findAllByPractitioner_type($Practitioner_typeId) {
-        $sql = "select * from Practitioner where Practitioner_type_id=? order by name";
-        $result = $this->getDb()->fetchAll($sql, array($Practitioner_typeId));
+    public function findAllByPractitionerType($PractitionerTypeId) {
+        $sql = "select * from practitioner where practitioner_type_id=? order by practitioner_name";
+        $result = $this->getDb()->fetchAll($sql, array($PractitionerTypeId));
         
         // Convert query result to an array of domain objects
         $Practitioners = array();
@@ -61,7 +61,7 @@ class PractitionerDAO extends DAO
      * @return \GSB\Domain\Practitioner|throws an exception if no Practitioner is found.
      */
     public function find($id) {
-        $sql = "select * from Practitioner where Practitioner_id=?";
+        $sql = "select * from practitioner where practitioner_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
@@ -78,18 +78,18 @@ class PractitionerDAO extends DAO
      * @return \GSB\Domain\Practitioner
      */
     protected function buildDomainObject($row) {
-        $Practitioner_typeId = $row['Practitioner_type_id'];
-        $Practitioner_type = $this->Practitioner_typeDAO->find($Practitioner_typeId);
+        $PractitionerTypeId = $row['practitioner_type_id'];
+        $PractitionerType = $this->PractitionerTypeDAO->find($PractitionerTypeId);
 
         $Practitioner = new Practitioner();
-        $Practitioner->setId($row['Practitioner_id']);
-        $Practitioner->setCopyrighting($row['name']);
-        $Practitioner->setTradeName($row['first_name']);
-        $Practitioner->setContent($row['address']);
-        $Practitioner->setEffects($row['zip_code']);
-        $Practitioner->setContraindication($row['city']);
-        $Practitioner->setSamplePrice($row['notoriety_coefficient']);
-        $Practitioner->setPractitioner_type($Practitioner_type);
+        $Practitioner->setId($row['practitioner_id']);
+        $Practitioner->setName($row['practitioner_name']);
+        $Practitioner->setFirstName($row['practitioner_first_name']);
+        $Practitioner->setAddress($row['practitioner_address']);
+        $Practitioner->setZipCode($row['practitioner_zip_code']);
+        $Practitioner->setCity($row['practitioner_city']);
+        $Practitioner->setNotorietyCoefficient($row['notoriety_coefficient']);
+        $Practitioner->setPractitionerType($PractitionerType);
         return $Practitioner;
     }
 }

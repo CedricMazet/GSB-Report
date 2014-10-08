@@ -2,10 +2,10 @@
 
 namespace GSB\Domain;
 
-class Practitioner_type 
+class PractitionerType 
 {
     /**
-     * Practitioner_type id.
+     * PractitionerType id.
      *
      * @var integer
      */

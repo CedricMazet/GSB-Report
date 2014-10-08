@@ -56,9 +56,9 @@ class practitioner
     /**
      * Family.
      *
-     * @var \GSB\Domaine\Practitioner_type
+     * @var \GSB\Domaine\PractitionerType
      */
-    private $practitioner_type;
+    private $practitionerType;
 
     public function getId() {
         return $this->id;
@@ -116,11 +116,11 @@ class practitioner
         $this->notorietyCoefficient = $notorietyCoefficient;
     }
 
-    public function getPractitioner_type() {
-        return $this->practitioner_type;
+    public function getPractitionerType() {
+        return $this->practitionerType;
     }
 
-    public function setPractitioner_type($practitioner_type) {
-        $this->practitioner_type = $practitioner_type;
+    public function setPractitionerType($practitionerType) {
+        $this->practitionerType = $practitionerType;
     }
 }

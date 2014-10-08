@@ -46,13 +46,13 @@ $app->get('/practitioners/', function() use ($app) {
 
 // Search form for Practitioners
 $app->get('/practitioners/search/', function() use ($app) {
-    $practitioner_types = $app['dao.practitioner_type']->findAll();
-    return $app['twig']->render('practitioners_search.html.twig', array('practitioner_types' => $practitioner_types));
+    $practitionerTypes = $app['dao.practitionerType']->findAll();
+    return $app['twig']->render('practitioners_search.html.twig', array('practitionerTypes' => $practitionerTypes));
 });
 
 // Results page for Practitioners
 $app->post('/practitioners/results/', function(Request $request) use ($app) {
-    $practitioner_typeId = $request->request->get('practitioner_type');
-    $practitioners = $app['dao.practitioner']->findAllByFamily($familyId);
+    $practitionerTypeId = $request->request->get('practitionerType');
+    $practitioners = $app['dao.practitioner']->findAllByPractitionerType($practitionerTypeId);
     return $app['twig']->render('practitioners_results.html.twig', array('practitioners' => $practitioners));
 });
