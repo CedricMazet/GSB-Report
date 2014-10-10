@@ -7,7 +7,7 @@ use GSB\Domain\PractitionerType;
 class PractitionerTypeDAO extends DAO
 {
     /**
-     * Returns the list of all families, sorted by name.
+     * Returns the list of all practitioner types, sorted by name.
      *
      * @return array The list of all families.
      */
@@ -16,18 +16,18 @@ class PractitionerTypeDAO extends DAO
         $result = $this->getDb()->fetchAll($sql);
         
         // Converts query result to an array of domain objects
-        $families = array();
+        $practitionerTypes = array();
         foreach ($result as $row) {
-            $PractitionerTypeId = $row['practitioner_type_id'];
-            $PractitionerType[$PractitionerTypeId] = $this->buildDomainObject($row);
+            $practitionerTypeId = $row['practitioner_type_id'];
+            $practitionerTypes[$practitionerTypeId] = $this->buildDomainObject($row);
         }
-        return $PractitionerType;
+        return $practitionerTypes;
     }
 
     /**
      * Returns the PractitionerType matching the given id.
      *
-     * @param integer $id The PractitionerType id.
+     * @param integer $id
      *
      * @return \GSB\Domain\PractitionerType|throws an exception if no PractitionerType is found.
      */
@@ -49,9 +49,10 @@ class PractitionerTypeDAO extends DAO
      * @return \GSB\Domain\PractitionerType
      */
     protected function buildDomainObject($row) {
-        $PractitionerType = new PractitionerType();
-        $PractitionerType->setId($row['practitioner_type_id']);
-        $PractitionerType->setName($row['practitioner_type_name']);
-        return $PractitionerType;
+        $practitionerType = new PractitionerType();
+        $practitionerType->setId($row['practitioner_type_id']);
+        $practitionerType->setName($row['practitioner_type_name']);
+        $practitionerType->setPlace($row['practitioner_type_place']);
+        return $practitionerType;
     }
 }

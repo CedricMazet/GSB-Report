@@ -2,10 +2,10 @@
 
 namespace GSB\Domain;
 
-class practitioner 
+class Practitioner 
 {
     /**
-     * Drug id.
+     * Practitioner id.
      *
      * @var integer
      */
@@ -33,7 +33,7 @@ class practitioner
     private $address;
 
     /**
-     * Side Zip code.
+     * Zip Code.
      *
      * @var string
      */
@@ -54,11 +54,11 @@ class practitioner
     private $notorietyCoefficient;
 
     /**
-     * Family.
+     * Type.
      *
      * @var \GSB\Domaine\PractitionerType
      */
-    private $practitionerType;
+    private $type;
 
     public function getId() {
         return $this->id;
@@ -112,15 +112,15 @@ class practitioner
         return $this->notorietyCoefficient;
     }
 
-    public function setNotorietyCoefficient($notorietyCoefficient) {
+    public function setnotorietyCoefficient($notorietyCoefficient) {
         $this->notorietyCoefficient = $notorietyCoefficient;
     }
 
-    public function getPractitionerType() {
-        return $this->practitionerType;
+    public function getType() {
+        return $this->type;
     }
 
-    public function setPractitionerType($practitionerType) {
-        $this->practitionerType = $practitionerType;
+    public function setType($type) {
+        $this->type = $type;
     }
 }

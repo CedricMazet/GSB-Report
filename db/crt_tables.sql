@@ -14,7 +14,7 @@ create table activity  (
 /* Table : component                                          */
 /*==============================================================*/
 create table component  (
-   component_id       int(11)                         not null,
+   component_id       int(11)  not null        auto_increment,
    component_name     varchar(100),
    constraint pk_component primary key (component_id)
 );
@@ -228,7 +228,7 @@ create table prescribing  (
 /* Table : presentation                                       */
 /*==============================================================*/
 create table presentation  (
-   presentation_id    int(11)                         not null,
+   presentation_id    int(11)          not null   auto_increment,
    presentation_name  varchar(100),
    constraint pk_presentation primary key (presentation_id)
 );
@@ -274,7 +274,7 @@ create table state  (
 /* Table : visit_report                                       */
 /*==============================================================*/
 create table visit_report  (
-   report_id          int(11)                         not null,
+   report_id          int(11)         not null      auto_increment,
    practitioner_id    int(11),
    visitor_id         int(11)                         not null,
    reporting_date     date,
@@ -301,6 +301,7 @@ create table visitor  (
    salt               varchar(23)                    not null,
    role               varchar(100)                   not null,
    visitor_type       char(1),
+   constraint uniq_user_name unique key (user_name),
    constraint pk_visitor primary key (visitor_id)
 );
 

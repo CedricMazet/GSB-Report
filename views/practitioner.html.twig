@@ -1,51 +1,39 @@
 {% extends "layout.html.twig" %}
-{% set drugMenu = true %}
+{% set practitionerMenu = true %}
 
-{% block title %}{{ drug.tradeName }}{% endblock %}
+{% block title %}{{ practitioner.firstName }} {{ practitioner.name }}{% endblock %}
 
 {% block content %}
 <h2 class="text-center">{{ block('title') }}</h2>
 <div class="well">
     <form class="form-horizontal" role="form">
         <div class="form-group">
-            <label class="col-sm-3 control-label">Type praticien</label>
-            <div class="col-sm-9">
-                <p class="form-control-static">{{ practitioner.practitioner_type.name }}</p>
+            <label class="col-sm-5 control-label">Type</label>
+            <div class="col-sm-7">
+            <p class="form-control-static">{{ practitioner.type.name }}</p>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">Nom praticien</label>
-            <div class="col-sm-9">
-            <p class="form-control-static">{{ practitioner.name }}</p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label">Prenom</label>
-            <div class="col-sm-9">
-                <p class="form-control-static">{{ practitioner.firstname }}</p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label">Adresse</label>
-            <div class="col-sm-9">
+            <label class="col-sm-5 control-label">Adresse</label>
+            <div class="col-sm-7">
                 <p class="form-control-static">{{ practitioner.address }}</p>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">Code postal</label>
-            <div class="col-sm-9">
-                <p class="form-control-static">{{ practitioner.zipcode }}</p>
+            <label class="col-sm-5 control-label">Code postal</label>
+            <div class="col-sm-7">
+                <p class="form-control-static">{{ practitioner.zipCode }}</p>
             </div>
         </div>
-		<div class="form-group">
-            <label class="col-sm-3 control-label">Ville</label>
-            <div class="col-sm-9">
+        <div class="form-group">
+            <label class="col-sm-5 control-label">Ville</label>
+            <div class="col-sm-7">
                 <p class="form-control-static">{{ practitioner.city }}</p>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">coefficient notoriété</label>
-            <div class="col-sm-9">
+            <label class="col-sm-5 control-label">Coefficient de notoriété</label>
+            <div class="col-sm-7">
                 <p class="form-control-static">{{ practitioner.notorietyCoefficient }}</p>
             </div>
         </div>

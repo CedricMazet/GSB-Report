@@ -17,20 +17,13 @@ class PractitionerType
      * @var string
      */
     private $name;
-	
-	/**
-     * Code.
-     *
-     * @var integer
-     */
-	private $code;
-	
-	/**
+
+    /**
      * Place.
      *
      * @var string
      */
-	private $place;
+    private $place;
 
     public function getId() {
         return $this->id;
@@ -47,12 +40,12 @@ class PractitionerType
     public function setName($name) {
         $this->name = $name;
     }
-	
-	public function setCode($code) {
-        $this->code = $code;
+
+    public function getPlace() {
+        return $this->place;
     }
-	
-	public function setPlace($place) {
+
+    public function setPlace($place) {
         $this->place = $place;
     }
 }
