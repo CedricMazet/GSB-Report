@@ -1,5 +1,6 @@
 <?php
 
+
 // Register global error and exception handlers
 use Symfony\Component\Debug\ErrorHandler;
 ErrorHandler::register();
